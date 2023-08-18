@@ -1,0 +1,38 @@
+import queue
+class MyStack:
+    q = None
+    def __init__(self):
+        self.q = []
+
+    def push(self, x: int) -> None:
+        if self.q is None:
+            return 
+
+        n = len(self.q)
+        self.q.append(x)
+        for i in range(n):
+            t = self.q.pop(0)
+            self.q.append(t)
+
+    def pop(self) -> int:
+        return self.q.pop(0) if(self.q and len(self.q)) else 0
+
+    def top(self) -> int:
+        return self.q[0] if (self.q and len(self.q)) else 0
+
+    def empty(self) -> bool:
+        return False if self.q is not None else True
+
+
+# Your MyStack object will be instantiated and called as such:
+def main():
+    obj = MyStack()
+    obj.push("1")
+    obj.push("2")
+    param_2 = obj.top()
+    param_3 = obj.pop()
+    param_4 = obj.empty()
+    print(param_2, param_3, param_4)
+
+if __name__ == "__main__":
+    main()
